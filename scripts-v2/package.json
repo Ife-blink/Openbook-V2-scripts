@@ -1,0 +1,25 @@
+{
+  "name": "yolodolo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "main": "ts-node main.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.28.1-beta.2",
+    "@coral-xyz/anchor-cli": "^0.28.0",
+    "@openbook-dex/openbook-v2": "^0.0.6",
+    "@solana/spl-token": "^0.3.8",
+    "@solana/web3.js": "^1.78.5",
+    "bn.js": "^5.2.1",
+    "eventemitter3": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.0",
+    "typescript": "^5.1.6"
+  }
+}
