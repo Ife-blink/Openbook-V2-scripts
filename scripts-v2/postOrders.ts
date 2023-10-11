@@ -16,7 +16,7 @@ async function main() {
     "EuaUfzypbyh5xtKD2nfHEfpQiTr8QSqu4VeRtLrfTF1c"
   );
   const marketPublicKey = new PublicKey(
-    "CwHc9CZ9UCZFayz4eBekuhhKsHapLDPYfX4tGFJrnTRt"
+    "BZJUJYrmaTSViBU6TyY8UJMJ7gwrFsLDbtzgEehCsXRp"
   );
   const market = await client.getMarket(marketPublicKey);
   if (!market) {

@@ -16,7 +16,8 @@
     "@solana/spl-token": "^0.3.8",
     "@solana/web3.js": "^1.78.5",
     "bn.js": "^5.2.1",
-    "eventemitter3": "^5.0.1"
+    "eventemitter3": "^5.0.1",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@types/node": "^20.5.0",

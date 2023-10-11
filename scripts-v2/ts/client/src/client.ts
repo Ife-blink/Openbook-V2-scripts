@@ -495,6 +495,15 @@ import {
       }
       return await this.sendAndConfirmTransaction([ix], { signers });
     }
+
+    //This is my method
+    public async consumeEvents(): Promise<TransactionSignature> {
+      const ix = await this.program.methods
+      .consumeEvents(limit, slots)
+      .accounts({
+        eventHeap: market.eventHeap,
+      })
+    }
   
     public async cancelAndPlaceOrders(
       openOrdersPublicKey: PublicKey,
