@@ -497,15 +497,17 @@ import {
     }
 
     //This is my method
-    public async consumeEvents(market: MarketAccount): Promise<TransactionSignature> {
+    public async consumeEvents(marketPublicKey: PublicKey, market: MarketAccount): Promise<TransactionSignature> {
       const ix = await this.program.methods
-      .consumeEvents(24)
+      .consumeEvents(new BN(24))
       .accounts({
         eventHeap: market.eventHeap,
-        market: market.marketAuthority,
+        market: marketPublicKey,
         consumeEventsAdmin: market.consumeEventsAdmin.key
       })
       .instruction()
+
+    console.log("Created consumeEvents instruction:", ix);
 
       return await this.sendAndConfirmTransaction([ix]);
     }

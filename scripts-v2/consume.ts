@@ -28,5 +28,8 @@ async function consumeEvents() {
     throw "No market";
   }
 
-  const tx = client.consumeEvents(marketObject)
+  const tx = await client.consumeEvents(marketPubkey, marketObject)
+  console.log(tx)
 }
+
+consumeEvents().then(() => process.exit(0));
