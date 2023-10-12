@@ -497,12 +497,17 @@ import {
     }
 
     //This is my method
-    public async consumeEvents(): Promise<TransactionSignature> {
+    public async consumeEvents(market: MarketAccount): Promise<TransactionSignature> {
       const ix = await this.program.methods
-      .consumeEvents(limit, slots)
+      .consumeEvents(24)
       .accounts({
         eventHeap: market.eventHeap,
+        market: market.marketAuthority,
+        consumeEventsAdmin: market.consumeEventsAdmin.key
       })
+      .instruction()
+
+      return await this.sendAndConfirmTransaction([ix]);
     }
   
     public async cancelAndPlaceOrders(
