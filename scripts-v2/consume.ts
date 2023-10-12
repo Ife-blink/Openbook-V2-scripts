@@ -15,30 +15,18 @@ async function consumeEvents() {
   const provider = new AnchorProvider(new Connection(RPC), wallet, {
     commitment: "confirmed",
   });
-  const market = new PublicKey("CwHc9CZ9UCZFayz4eBekuhhKsHapLDPYfX4tGFJrnTRt");
+  const marketPubkey = new PublicKey("CwHc9CZ9UCZFayz4eBekuhhKsHapLDPYfX4tGFJrnTRt");
   const OPENBOOK_PROGRAM_ID = new PublicKey(
     'opnbkNkqux64GppQhwbyEVc3axhssFhVYuwar8rDHCu',
   );
 
   const client = new OpenBookV2Client(programId, provider);
 
-  const marketPublicKey = await client.getMarket(
-    market
-  )
+  const marketObject = await client.getMarket(marketPubkey)
 
-  const Accounts: MarketAccount = {
-    bump: marketPublicKey?.bump || 253,
-    baseDecimals: marketPublicKey?.baseDecimals || 6,
-    quoteDecimals: marketPublicKey?.quoteDecimals || 6,
-    padding1: marketPublicKey?.padding1 || [],
-    timeExpiry: marketPublicKey?.timeExpiry,
-    collectFeeAdmin: marketPublicKey?.collectFeeAdmin || market,
-    openOrdersAdmin: marketPublicKey?.openOrdersAdmin || null,  
-   }
-   
-  const tx = client.consumeEvents(
-    Accounts
-  )
+  if (!marketObject) {
+    throw "No market";
+  }
 
-  
+  const tx = client.consumeEvents(marketObject)
 }
